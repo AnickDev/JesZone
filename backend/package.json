@@ -9,12 +9,13 @@
     "dev": "nodemon server.js",
     "start": "node server.js",
     "test": "vitest",
-    "test:run":"vitest run",
+    "test:run": "vitest run",
     "seed": "node src/services/seedService.js",
     "dados:exportar": "node src/services/exportarDados.js",
     "dados:importar": "node src/services/importarDados.js"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

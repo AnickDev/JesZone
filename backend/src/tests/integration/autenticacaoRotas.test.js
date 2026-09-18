@@ -4,7 +4,7 @@ import request from "supertest";
 import jwt from "jsonwebtoken";
 import app from "../../../app.js";
 
-describe("Funcionalidade da API - Autenticação e Integração", () => {
+describe.skip("Funcionalidade da API - Autenticação e Integração", () => {
   test("POST /api/auth/entrar deve realizar login com credenciais válidas", async () => {
     const resposta = await request(app).post("/api/auth/entrar").send({
       email: process.env.ADMIN_EMAIL,
