@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt"
 import { loginEsquema } from "../utils/esquemas.js";
 import { assincrono } from "../utils/assincrono.js";
 
@@ -11,7 +12,7 @@ export const entrar = assincrono(async (req, res) => {
   const { email, senha } = loginEsquema.parse(req.body);
 
   const emailValido = email.trim().toLowerCase() === (process.env.ADMIN_EMAIL || "").toLowerCase();
-  const senhaValida = senha === process.env.ADMIN_PASSWORD;
+  const senhaValida = bcrypt.compare(senha, process.env.ADMIN_PASSWORD).catch(err => console.log(err))
 
   if (!emailValido || !senhaValida) {
     return res.status(401).json({ erro: "E-mail ou senha inválidos." });
