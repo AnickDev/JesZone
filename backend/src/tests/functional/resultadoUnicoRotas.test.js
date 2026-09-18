@@ -139,6 +139,7 @@ describe("Funcionalidade da API - Resuktados únicos", () => {
     categoria: "Medio",
     paisKey: "br",
   });
+  console.log(idTurma)
 
   await ResultadoUnico.create({
     modalidadeSlug: "xadrez-exclusao",
