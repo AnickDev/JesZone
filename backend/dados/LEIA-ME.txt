@@ -1,0 +1,45 @@
+PASTA DE DADOS DO JES
+=====================
+
+Aqui fica o snapshot dos dados (dados-jes.json), que é o que faz o projeto
+chegar na outra pessoa JÁ COM TUDO CADASTRADO.
+
+POR QUE ISSO EXISTE
+-------------------
+Os dados que você cadastra ficam no MySQL do SEU computador, e não dentro da
+pasta do projeto. Por isso, zipar a pasta e enviar faz o projeto chegar vazio
+do outro lado. O snapshot resolve isso: ele grava os dados do banco em um
+arquivo que viaja junto no ZIP.
+
+NO SEU COMPUTADOR (depois de cadastrar tudo)
+--------------------------------------------
+  cd backend
+  npm run dados:exportar
+
+Isso gera backend/dados/dados-jes.json com TODAS as turmas, jogos, confrontos,
+resultados, regulamentos e notificações que estiverem no seu banco.
+
+Rode esse comando SEMPRE que alterar algo e quiser enviar a versão atualizada.
+Só depois disso é que você zipa a pasta e envia.
+
+NA MÁQUINA DE QUEM RECEBE
+-------------------------
+Nada de especial: é só rodar o backend normalmente.
+
+  cd backend
+  npm install
+  npm start
+
+Ao subir com o banco vazio, o servidor cria o banco, cria as tabelas e importa
+o dados-jes.json sozinho. Os dados aparecem prontos, sem mexer em código.
+
+Se o banco já tiver dados, o snapshot é ignorado (nada é sobrescrito).
+Para forçar a importação mesmo assim:
+
+  npm run dados:importar -- --forcar
+
+ATENÇÃO
+-------
+- O dados-jes.json PRECISA estar dentro do ZIP. Confira antes de enviar.
+- Quem receber pode precisar ajustar DB_USER/DB_PASSWORD no backend/.env
+  para a senha do MySQL da máquina dele. É o único ajuste possível.

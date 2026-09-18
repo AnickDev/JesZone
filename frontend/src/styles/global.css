@@ -1,0 +1,343 @@
+@import "tailwindcss" source(none);
+@source "..";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.1875rem;
+  --text-xl: 1.3125rem;
+  --text-2xl: 1.625rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.375rem;
+  --text-5xl: 3.25rem;
+  --text-6xl: 4rem;
+  --text-7xl: 5rem;
+  --text-8xl: 6.75rem;
+  --text-9xl: 9rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+  --color-sesi-blue: var(--sesi-blue);
+  --color-sesi-blue-2: var(--sesi-blue-2);
+  --color-sesi-green: var(--sesi-green);
+  --color-jes-green: var(--jes-green);
+  --font-display: "Bebas Neue", "Impact", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Paleta institucional SESI · JES 2026 (tema claro) */
+  --background: #f7f7f5;
+  --foreground: #10182f;
+  --card: #ffffff;
+  --card-foreground: #10182f;
+  --popover: #ffffff;
+  --popover-foreground: #10182f;
+  --primary: #10182f;
+  --primary-foreground: #ffffff;
+  --secondary: #eef0f4;
+  --secondary-foreground: #10182f;
+  --muted: #f1f2f4;
+  --muted-foreground: #6B7280;
+  --accent: #f3bb1f;
+  --accent-foreground: #10182f;
+  --destructive: #b83a35;
+  --destructive-foreground: #ffffff;
+  --border: #e2e4e8;
+  --input: #e2e4e8;
+  --ring: #d4a72c;
+  --gold: #d4a72c;
+  --gold-hover: #b98e1f;
+  --sesi-blue: #10182f;
+  --sesi-blue-2: #3b5f9b;
+  --sesi-green: #3b5f9b;
+  --jes-green: #52ae32;
+}
+
+.dark {
+  color-scheme: light;
+}
+
+::-webkit-scrollbar {
+  display: none; 
+}
+
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { background-color: var(--color-background); color: var(--color-foreground); }
+  body {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    background-image:
+      radial-gradient(ellipse at top, rgba(59, 95, 155, 0.08), transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(212, 167, 44, 0.1), transparent 60%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: 0.02em; }
+}
+
+@utility glass {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(16, 24, 47, 0.06);
+}
+
+@utility glass-strong {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(16, 24, 47, 0.08);
+}
+
+@utility gold-text {
+  background: linear-gradient(135deg, #d4a72c, #b98e1f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Painéis sobrepostos (busca, notificações, pop-ups): fundo sólido para leitura. */
+@utility panel-solid {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 60px rgba(16, 24, 47, 0.18);
+}
+
+@layer base {
+  /* Contraste garantido nos seletores nativos (mobile e desktop). */
+  select {
+    color: #10182f;
+    background-color: #ffffff;
+  }
+  select option {
+    color: #10182f;
+    background-color: #ffffff;
+  }
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="time"] {
+    color-scheme: light;
+  }
+}
+
+
+/* TELÃO */
+.telao-fullscreen:fullscreen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+  margin: 0;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  background: #F4F5F8;
+}
+
+/* TELÃO FUNDO COLORIDO */
+.telao-fullscreen:fullscreen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at -5% -5%,
+      rgba(215, 25, 32, 0.48) 0%,
+      rgba(215, 25, 32, 0.24) 5%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 105% -5%,
+      rgba(242, 193, 46, 0.42) 0%,
+      rgba(242, 193, 46, 0.21) 5%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at -5% 105%,
+      rgba(43, 89, 219, 0.48) 0%,
+      rgba(43, 89, 219, 0.24) 5%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 105% 105%,
+      rgba(34, 161, 95, 0.48) 0%,
+      rgba(34, 161, 155, 0.24) 5%,
+      transparent 32%
+    ),
+    #F4F5F8;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+.telao-fullscreen:fullscreen > div {
+  position: relative;
+  z-index: 10;
+
+  width: 100%;
+  max-width: 1152px;
+  height: auto;
+  margin: 0;
+}
+
+/* DEGRADE TELA INCIAL */
+.home-background {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at -5% -5%,
+      rgba(215, 25, 32, 0.48) 0%,
+      rgba(215, 25, 32, 0.24) 5%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 105% -5%,
+      rgba(242, 193, 46, 0.42) 0%,
+      rgba(242, 193, 46, 0.21) 5%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at -5% 105%,
+      rgba(43, 89, 219, 0.48) 0%,
+      rgba(43, 89, 219, 0.24) 5%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 105% 105%,
+      rgba(34, 161, 95, 0.48) 0%,
+      rgba(34, 161, 155, 0.24) 5%,
+      transparent 32%
+    ),
+    #F4F5F8;
+
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* LEMBRETES: mesmo esquema de cores do telão/home, só que concentrado num
+   card pequeno (por isso os raios de alcance das cores são maiores: 55%
+   em vez de ~32%, senão as manchas não se encontram num card compacto). */
+.lembrete-fundo {
+  background:
+    radial-gradient(
+      circle at -10% -10%,
+      rgba(215, 25, 32, 0.4) 0%,
+      rgba(215, 25, 32, 0.2) 8%,
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 110% -10%,
+      rgba(242, 193, 46, 0.38) 0%,
+      rgba(242, 193, 46, 0.18) 8%,
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at -10% 110%,
+      rgba(43, 89, 219, 0.4) 0%,
+      rgba(43, 89, 219, 0.2) 8%,
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 110% 110%,
+      rgba(34, 161, 95, 0.4) 0%,
+      rgba(34, 161, 95, 0.2) 8%,
+      transparent 55%
+    ),
+    #ffffff;
+}
+
+/* DEGRADE ADMIN */
+.admin-background{
+   min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at -5% -5%,
+      rgba(215, 25, 32, 0.48) 0%,
+      rgba(215, 25, 32, 0.24) 5%,
+      transparent 15%
+    ),
+    radial-gradient(
+      circle at 105% -5%,
+      rgba(242, 193, 46, 0.42) 0%,
+      rgba(242, 193, 46, 0.21) 5%,
+      transparent 15%
+    ),
+    radial-gradient(
+      circle at -5% 105%,
+      rgba(43, 89, 219, 0.48) 0%,
+      rgba(43, 89, 219, 0.24) 5%,
+      transparent 15%
+    ),
+    radial-gradient(
+      circle at 105% 105%,
+      rgba(34, 161, 95, 0.48) 0%,
+      rgba(34, 161, 155, 0.24) 5%,
+      transparent 15%
+    ),
+    #F4F5F8;
+
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 376px) {
+  .match-teams {
+    gap: 0.25rem;
+  }
+
+  .match-teams > div:first-child button,
+  .match-teams > div:last-child button {
+    gap: 0.25rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .match-teams .text-sm {
+    font-size: 0.78rem;
+  }
+
+  .match-teams .text-\[10px\] {
+    font-size: 0.58rem;
+  }
+}

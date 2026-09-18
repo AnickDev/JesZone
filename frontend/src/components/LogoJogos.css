@@ -1,0 +1,632 @@
+/* =========================================================
+   LOGO COMPLETA
+========================================================= */
+
+.logo-jogos {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  /*
+   * Não cria nenhum fundo.
+   */
+  background: transparent;
+}
+
+
+/* =========================================================
+   CÍRCULO
+========================================================= */
+
+.logo-circular {
+    width: 400px;
+  height: 400px;
+
+  position: relative;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  /*
+   * IMPORTANTE:
+   * nenhuma cor aqui.
+   */
+  background: transparent;
+}
+
+
+/* =========================================================
+   SVG
+========================================================= */
+
+.texto-circular {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TEXTO CIRCULAR
+========================================================= */
+
+.texto-logo {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  /*
+   * A cor inicial é escura.
+   *
+   * O JavaScript altera individualmente
+   * a cor de cada letra.
+   */
+  fill: #111111;
+
+  /*
+   * Mantém as letras próximas.
+   */
+  word-spacing: 0;
+
+}
+
+
+/* =========================================================
+   CADA LETRA
+========================================================= */
+
+.texto-logo tspan {
+  transition:
+    fill 120ms linear;
+}
+
+
+/* =========================================================
+   ROTAÇÃO
+========================================================= */
+
+.texto-rotacao {
+  transform-box: view-box;
+
+  /*
+   * O centro exato do nosso SVG é:
+   * 300 x 300
+   */
+  transform-origin: 300px 300px;
+
+  animation:
+    girar-logo
+    32s
+    linear
+    infinite;
+}
+
+@keyframes girar-logo {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/*
+ * 32 segundos por volta.
+ *
+ * Se quiser ainda mais lento:
+ *
+ * 40s
+ *
+ * Se quiser um pouco mais rápido:
+ *
+ * 25s
+ */
+
+@keyframes girar-logo {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================================================
+   TAÇA
+========================================================= */
+
+.taca-logo {
+
+  position: absolute;
+
+  z-index: 10;
+
+  width: 190px;
+  height: 290px;
+
+  object-fit: contain;
+
+  background: transparent;
+
+  /*
+   * Apenas sombra.
+   *
+   * Não altera a cor da taça.
+   */
+  filter:
+    drop-shadow(
+      0 10px 12px
+      rgba(0, 0, 0, 0.15)
+    );
+
+}
+
+
+/* =========================================================
+   TEXTO AO LADO
+========================================================= */
+
+.nome-jogos {
+
+  position: relative;
+
+  z-index: 5;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  text-align: left;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-weight: 900;
+
+  /*
+   * Deixa as linhas muito próximas.
+   */
+  line-height: 0.82;
+
+  /*
+   * O círculo influencia visualmente
+   * o lado esquerdo.
+   */
+  margin-left: -180px;
+
+  /*
+   * Espaçamento interno.
+   */
+  padding:
+    38px
+    35px
+    38px
+    25px;
+
+  /*
+   * ESSA É A CURVA OVAL DO LADO ESQUERDO.
+   */
+  border-radius:
+    170px
+    45px
+    45px
+    170px;
+
+  background: transparent;
+
+}
+
+
+/* =========================================================
+   JOGOS
+========================================================= */
+
+.linha-jogos {
+
+   font-size: clamp(55px, 4.8vw, 76px);
+
+  letter-spacing: -6px;
+
+  color: #d4a72c;
+
+  white-space: nowrap;
+
+  /*
+   * Faz o início acompanhar a curva.
+   */
+  margin-left: 50px;
+
+}
+
+
+/* =========================================================
+   ESTUDANTIS
+========================================================= */
+
+.linha-estudantis {
+
+  font-size: clamp(55px, 4.8vw, 76px);
+
+  letter-spacing: -7px;
+
+  color: #0066B3;
+
+  /*
+   * ITÁLICO.
+   */
+  font-style: italic;
+
+  white-space: nowrap;
+
+  margin-left: 0;
+
+  margin-top: 12px;
+
+}
+
+
+/* =========================================================
+   DO SESI
+========================================================= */
+
+.linha-sesi {
+
+  font-size: clamp(55px, 4.8vw, 76px);
+
+  letter-spacing: -6px;
+
+  color: #d4a72c;
+
+  white-space: nowrap;
+
+  
+
+  /*
+   * Não gira.
+   */
+  transform: none;
+
+  margin-left: 20px;
+
+  margin-top: 12px;
+
+}
+
+
+/* =========================================================
+   DESKTOP GRANDE
+========================================================= */
+
+@media (min-width: 1400px) {
+
+  .logo-circular {
+    width: 580px;
+    height: 580px;
+  }
+
+  .taca-logo {
+    width: 285px;
+    height: 430px;
+  }
+
+  .texto-logo {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  /*
+   * Um pouco maior e mais forte.
+   */
+  font-size: 27px;
+
+  font-weight: 900;
+
+  /*
+   * Mantém as letras próximas,
+   * mas sem ficarem grudadas.
+   */
+  letter-spacing: 1.3px;
+
+  fill: #111111;
+
+  word-spacing: 0;
+
+  /*
+   * Deixa o desenho das letras mais encorpado.
+   */
+  paint-order: stroke fill;
+
+  stroke-width: 0.60px;
+}
+
+  .linha-jogos,
+  .linha-estudantis,
+  .linha-sesi {
+    font-size: 100px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .logo-circular {
+    width: 420px;
+    height: 420px;
+  }
+
+  .taca-logo {
+    width: 205px;
+    height: 310px;
+  }
+
+  .texto-logo {
+    font-size: 19px;
+    letter-spacing: 0.8px;
+  }
+
+  .nome-jogos {
+    margin-left: -35px;
+
+    padding:
+      25px
+      25px
+      25px
+      20px;
+  }
+
+  .linha-jogos,
+  .linha-estudantis,
+  .linha-sesi {
+    font-size: 58px;
+
+    letter-spacing: -4px;
+  }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .logo-jogos {
+
+    flex-direction: column;
+
+    gap: 5px;
+
+  }
+
+  .logo-circular {
+
+    width: 330px;
+    height: 330px;
+
+  }
+
+  .taca-logo {
+
+    width: 150px;
+    height: 225px;
+
+  }
+
+  .texto-logo {
+
+    font-size: 15px;
+
+    letter-spacing: 0.4px;
+
+  }
+
+  .nome-jogos {
+
+    margin-left: 0;
+
+    padding:
+      15px
+      20px;
+
+    border-radius:
+      90px
+      30px
+      30px
+      90px;
+
+  }
+
+  .linha-jogos,
+  .linha-estudantis,
+  .linha-sesi {
+
+    font-size: 44px;
+
+    letter-spacing: -3px;
+
+  }
+
+  .linha-jogos {
+
+    margin-left: 25px;
+
+  }
+
+  .linha-sesi {
+
+    margin-left: 10px;
+
+  }
+
+}
+
+.logo-circular {
+  width: clamp(300px, 32vw, 500px) !important;
+  height: clamp(300px, 32vw, 500px) !important;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.texto-logo {
+  font-size: clamp(17px, 2vw, 25px) !important;
+  letter-spacing: 1.4px !important;
+}
+
+.taca-logo {
+  width: clamp(150px, 15vw, 190px) !important;
+  height: auto !important;
+  position: absolute;
+  z-index: 10;
+
+     -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 72%,
+    rgba(0, 0, 0, 0.85) 78%,
+    rgba(0, 0, 0, 0.5) 90%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 72%,
+    rgba(0, 0, 0, 0.85) 78%,
+    transparent 95%,
+    transparent 100%
+  );
+}
+
+.nome-jogos {
+  margin-left: -120px !important;
+}
+
+.linha-jogos,
+.linha-estudantis,
+.linha-sesi {
+  font-size: clamp(52px, 5.8vw, 86px) !important;
+}
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .logo-jogos {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+ .logo-circular {
+  width: 300px !important;
+  height: 290px !important;
+  position: relative;
+  z-index: 1;
+  transform: scale(1.15);
+}
+.logo-circular {
+  overflow: visible;
+}
+
+  .texto-logo {
+    font-size: 24.5px !important;
+  letter-spacing: 1.4px !important;
+  }
+
+  .taca-logo {
+  width: 145px !important;
+  height: auto !important;
+  position: absolute;
+  z-index: 5;
+
+   -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 72%,
+    rgba(0, 0, 0, 0.85) 78%,
+    rgba(0, 0, 0, 0.5) 90%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 72%,
+    rgba(0, 0, 0, 0.85) 78%,
+    transparent 95%,
+    transparent 100%
+  );
+
+}
+
+  .nome-jogos {
+    margin-left: 0 !important;
+    margin-top: -10px;
+    align-items: flex-start;
+  }
+
+  .linha-jogos,
+  .linha-estudantis,
+  .linha-sesi {
+    font-size: 52px !important;
+    letter-spacing: -3px;
+  }
+
+  .linha-jogos {
+    margin-top: 20px;
+    
+    margin-left: 20px;
+  }
+
+  .linha-estudantis {
+    margin-left: 0;
+  }
+
+  .linha-sesi {
+    margin-left: 10px;
+    margin-bottom: -20px;
+  }
+}
